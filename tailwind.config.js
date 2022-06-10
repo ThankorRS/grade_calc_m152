@@ -7,11 +7,16 @@ module.exports = {
     extend: {
       colors: {
         custom: {
-          "Space-Cadet":"#2f3061",
-          "Air-Blue":"#6ca6c1",
-          "Light-Green":"#a1e887",
-          "Rosy-Brown":"#ac8887",
-          "English-Red":"#9f4a54",
+          "color-primary-text":"#32292f",
+          "color-primary-background":"#d1e3dd",
+          "color-primary-viceversa-text":"#d1e3dd",
+          "color-primary-viceversa-background":"#32292f",
+          "color-secondary-text":"#575366",
+          "color-secondary-background":"#5762D5",
+          "color-secondary-viceversa-text":"#5762D5",
+          "color-secondary-viceversa-background":"#5762D5",
+          "color-exception-text":"#A94D4D",
+          "color-exception-background":"#32292F",
         },
       },
     },
