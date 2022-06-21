@@ -1,23 +1,20 @@
 <script setup lang="ts">
-import TheMain from '@/components/TheMain.vue'
-import TheNav from '@/components/TheNav.vue'
+import TheMain from '@/components/TheMain.vue';
+import TheNav from '@/components/TheNav.vue';
+import TheFooter from '@/components/TheFooter.vue';
 </script>
 
 <template>
-  <div class="hidden">
-    <div class="bg-custom-Space-Cadet w-100 h-20"></div>
-    <div class="bg-custom-Air-Blue w-100 h-20"></div>
-    <div class="bg-custom-Light-Green w-100 h-20"></div>
-    <div class="bg-custom-Rosy-Brown w-100 h-20"></div>
-    <div class="bg-custom-English-Red w-100 h-20"></div>
-  </div>
   <section>
     <header>
       <TheNav />
     </header>
-    <main>
+    <main class="p-2 inset-0">
       <TheMain />
     </main>
+    <footer class="fixed bottom-0 w-screen h-16">
+      <TheFooter />
+    </footer>
   </section>
 </template>
 
