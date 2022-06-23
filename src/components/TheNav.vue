@@ -4,21 +4,22 @@ import { data } from '../components/data'
 
 export default defineComponent({
     setup() {
-      const props = data;
-
-      function avg(subject: { grades: any[]; }){
-      }
     },
     data(){
       return data;
     },
+    // computed: {
+    //   av
+    // },
     methods: {
-      avg: function(grades: any){
+      avg: function(){
         let sum = 0;
-        grades.forEach((element: any) => {
-          sum += parseFloat(element.grade);
-        });        
-        return (Math.round(sum / grades.length * 100) / 100).toFixed(2);
+
+        data.forEach(element => {
+          const subSum: any = element.grades.reduce((sum: number, current: number) => sum + current.grade, 0);
+          sum = sum + (Math.round(subSum / element.grades.length * 100) / 100);
+        });
+        return (Math.round(sum / data.length * 100) / 100).toFixed(1);
       }
     }
 })
@@ -39,7 +40,7 @@ export default defineComponent({
     </div>
     <div class="p-2 pl-10 flex">
       <p class="pr-4">Gesamt</p>
-      <p><span class="font-medium mr-1">Ø</span>{{ 4 }}</p>
+      <p><span class="font-medium mr-1">Ø</span>{{ avg() }}</p>
     </div>
   </nav>
 </template>

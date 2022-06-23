@@ -1,4 +1,4 @@
-export const data = [
+export let data = [
     {
         id: '1',
         name: 'GES - Gesellschaft',
