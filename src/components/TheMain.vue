@@ -1,78 +1,47 @@
-<template >
-  <table class="table-fixed bg-custom-color-primary-background text-center">
-  <thead>
-    <tr>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-custom-color-primary-text text-left w-60">GES</th>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-custom-color-primary-text text-left w-60">M151</th>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-custom-color-primary-text text-left w-60">M152</th>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-custom-color-primary-text text-left w-60">M153</th>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-custom-color-primary-text text-left w-60">M306</th>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-custom-color-primary-text text-left w-60">NWS</th>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-custom-color-primary-text text-left w-60">SPK</th>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-custom-color-primary-text text-left w-60">SPO</th>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-custom-color-primary-text text-left w-60">WUR</th>
-      <th class="border-b dark:border-slate-600 font-medium text-left w-60 bg-custom-color-exception-background align-middle text-center p-1">
-        <a href="" class="text-custom-color-primary-viceversa-text">
-          <font-awesome-icon class="h-10" icon="fa-solid fa-circle-plus" />
-        </a>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="border-b border-solid border-custom-color-exception-background">
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-    </tr>
-    <tr class="border-b border-solid border-custom-color-exception-background">
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-    </tr>
-        <tr class="border-b border-solid border-custom-color-exception-background">
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-    </tr>
-        <tr class="border-b border-solid border-custom-color-exception-background">
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-      <td class="border border-solid border-custom-color-exception-background">5.5</td>
-    </tr>    
-  </tbody>
-</table>
-</template>
-
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { data } from '../components/data'
 
 export default defineComponent({
     setup() {
-        
+      const props = data;
+
+      function avg(subject: { grades: any[]; }){
+      }
     },
+    data(){
+      return data;
+    },
+    methods: {
+      avg: function(grades: any){
+        let sum = 0;
+        grades.forEach((element: any) => {
+          sum += parseFloat(element.grade);
+        });        
+        return (Math.round(sum / grades.length * 100) / 100).toFixed(2);
+      }
+    }
 })
 </script>
+
+<template>
+  <div class="mt-20 mb-20">
+    <div v-for="element of $data">
+      <article class="bg-white rounded mt-5 p-4">
+        <div class="flex items-center">
+          <p><span class="font-medium mr-1">Ø</span>{{ avg(element.grades) }}</p>
+          <h2 class="font-medium p-2">{{ element.name }}</h2>
+        </div>
+        <section class="my-4 flex flex-wrap">
+            <div class="p-2 pl-4 pr-4 mr-2 bg-gray-200 hover:bg-red-300 cursor-pointer" v-for="grade of element.grades" @click="removeGrade(grade)">
+              <p>{{grade.grade.toFixed(2)}}</p>
+            </div>
+        </section>
+        <div class="my-2 flex items-center">
+            <input type="number" placeholder="6.0" min="1.0" max="6.0" class="w-16 block input" />
+            <button type="button" class="icon-btn ml-2 p-2 pl-3 pr-3 hover:bg-green-300">+</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</template>
